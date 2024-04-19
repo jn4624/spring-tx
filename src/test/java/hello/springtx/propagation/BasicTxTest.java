@@ -64,7 +64,7 @@ public class BasicTxTest {
     void double_commit_rollback() {
         log.info("트랜잭션1 시작");
         TransactionStatus txStatus1 = txManager.getTransaction(new DefaultTransactionAttribute());
-        log.info("트랜잭션 커밋1");
+        log.info("트랜잭션1 커밋");
         txManager.commit(txStatus1);
 
         log.info("트랜잭션2 시작");
