@@ -25,6 +25,16 @@ public class LogRepository {
         }
     }
 
+    public void saveV1(Log logMessage) {
+        log.info("log 저장");
+        entityManager.persist(logMessage);
+
+        if (logMessage.getMessage().contains("로그예외")) {
+            log.info("log 저장시 예외 발생");
+            throw new RuntimeException("예외 발생");
+        }
+    }
+
     public Optional<Log> find(String message) {
         return entityManager.createQuery("select l from Log l where l.message = :message", Log.class)
                 .setParameter("message", message)
